@@ -3,8 +3,10 @@ import styles from './ProjectList.module.css'
 
 const ProjectList: React.FC = () => {
   return (
-    <div className={styles.projectlistcontainer}>
-      <div className={styles.projectlist}></div>
+    <div className={styles.componentcontainer}>
+      <div className={styles.projectlist}>
+        <div className={styles.listcontainer}></div>
+      </div>
     </div>
   )
 }
