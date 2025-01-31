@@ -2,6 +2,78 @@
     background-color: whitesmoke;
     margin-bottom: 10pt;
     border-radius: 15pt;
-    width: 100%;
-    height: 12%;
+    width: 98%;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.customer {
+    font-size: 1rem;
+    color: gray;
+    margin: 0;
+}
+
+.dateAddedContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    font-size: 0.9rem;
+    width: 25%;
+}
+
+.finishEstimateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    font-size: 0.9rem;
+    width: 25%;
+}
+
+.phaseContainer {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 25%
+}
+
+.phase {
+    padding: 1px 2px;
+    font-size: 0.9rem;
+    border-radius: 12pt;
+    text-align: center;
+    min-width: 50px;
+    font-weight: bold;
+}
+
+.planning {
+    background-color: orange;
+    color: black;
+}
+
+.inprogress {
+    background-color: blue;
+    color: white;
+}
+
+.completed {
+    background-color: green;
+    color: white;
 }
