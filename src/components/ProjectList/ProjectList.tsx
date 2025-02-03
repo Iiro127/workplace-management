@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './ProjectList.module.css';
 import Project from '../Project/Project.tsx';
+import ProjectTitles from '../ProjectTitles/ProjectTitles.tsx'
 
 const projects = [
     {
@@ -83,6 +84,7 @@ const ProjectList: React.FC = () => {
         <div className={styles.componentcontainer}>
             <div className={styles.projectlist}>
                 <div className={styles.listcontainer}>
+                    <ProjectTitles />
                     {projects.map((project) => (
                         <Project 
                             key={project.id} 

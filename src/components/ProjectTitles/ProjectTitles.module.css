@@ -1,0 +1,16 @@
+.titles {
+    width: 100%;
+    margin-bottom: 10pt;
+    display: flex;
+    height: 10pt;
+    align-items: center;
+}
+
+.nameContainer,
+.dateAddedContainer,
+.finishEstimateContainer,
+.phaseContainer {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
