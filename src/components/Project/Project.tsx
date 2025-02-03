@@ -23,19 +23,21 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, phase }) => {
     return (
         <div className={styles.projectitem}>
-            <div className={styles.details}>
-                <h2 className={styles.title}>{title}</h2>
-                <p className={styles.customer}>{customer}</p>
-            </div>
-            <div className={styles.dateAddedContainer}>
-                <p>{dateAdded}</p>
-            </div>
-            <div className={styles.finishEstimateContainer}>
-                <p>{finishEstimate}</p>
-            </div>
-            <div className={styles.phaseContainer}>
-                <div className={`${styles.phase} ${styles[phase.toLowerCase()]}`}>
-                    <p>{phase}</p>
+            <div className={styles.maininfo}>
+                <div className={styles.details}>
+                    <h2 className={styles.title}>{title}</h2>
+                    <p className={styles.customer}>{customer}</p>
+                </div>
+                <div className={styles.dateAddedContainer}>
+                    <p>{dateAdded}</p>
+                </div>
+                <div className={styles.finishEstimateContainer}>
+                    <p>{finishEstimate}</p>
+                </div>
+                <div className={styles.phaseContainer}>
+                    <div className={`${styles.phase} ${styles[phase.toLowerCase()]}`}>
+                        <p>{phase}</p>
+                    </div>
                 </div>
             </div>
         </div>
