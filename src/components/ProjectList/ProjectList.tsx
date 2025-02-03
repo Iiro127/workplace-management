@@ -93,6 +93,8 @@ const ProjectList: React.FC = () => {
                             dateAdded={project.dateAdded}
                             finishEstimate={project.finishEstimate}
                             phase={project.phase}
+                            manager={project.manager}
+                            members={project.members}
                         />
                     ))}
                 </div>

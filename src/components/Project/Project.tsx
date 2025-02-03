@@ -20,7 +20,7 @@ interface ProjectProps {
 }
 
 
-const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, phase }) => {
+const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, phase, manager, members }) => {
     return (
         <div className={styles.projectitem}>
             <div className={styles.maininfo}>
@@ -38,6 +38,18 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     <div className={`${styles.phase} ${styles[phase.toLowerCase()]}`}>
                         <p>{phase}</p>
                     </div>
+                </div>
+            </div>
+            <div className={styles.expandinfo}>
+                <div className={styles.managercontainer}>
+                    <h3 className={styles.title}>Manager</h3>
+                    <p className={styles.customer}>{manager.firstName} {manager.lastName}</p>
+                </div>
+                <div className={styles.memberscontainer}>
+                    <h3 className={styles.title}>Members</h3>
+                    {members.map((member) => (
+                        <p className={styles.customer}>{member.firstName} {member.lastName}</p>
+                    ))}
                 </div>
             </div>
         </div>

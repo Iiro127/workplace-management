@@ -3,12 +3,13 @@
     margin-bottom: 10pt;
     border-radius: 15pt;
     width: 98%;
-    height: auto;
+    height: 45pt;
+    overflow: hidden;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .projectitem:hover {
-    height: 120pt;
+    height: auto;
 }
 
 .maininfo {
@@ -17,6 +18,13 @@
     margin-top: 0;
     display: flex;
     align-items: center;
+    margin-bottom: 10pt;
+}
+
+.expandinfo {
+    width: 100%;
+    height: auto;
+    display: flex;
 }
 
 .details {
@@ -85,4 +93,16 @@
 .completed {
     background-color: green;
     color: white;
+}
+
+.managercontainer {
+    margin: 0;
+    font-size: 0.9rem;
+    align-items: center;
+    width: 50%;
+}
+
+.memberscontainer {
+    font-size: 0.9rem;
+    width: 50%;
 }
