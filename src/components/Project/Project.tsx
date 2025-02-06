@@ -52,6 +52,7 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     ))}
                 </div>
             </div>
+
         </div>
     );
 };
