@@ -1,7 +1,6 @@
 .componentcontainer {
     display: flex;
     justify-content: center;
-    align-items: center;
     position: fixed;
     right: 0;
     width: 92%;
@@ -15,7 +14,7 @@
     border-radius: 20pt;
     background-color: silver;
     width: 70%;
-    height: 500pt;
+    height: auto;
 }
 
 .listcontainer {
