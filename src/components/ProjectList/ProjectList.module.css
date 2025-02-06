@@ -1,0 +1,23 @@
+.componentcontainer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    width: 92%;
+    height: 70vh;
+  }
+
+.projectlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20pt;
+    background-color: silver;
+    width: 70%;
+    height: auto;
+}
+
+.listcontainer {
+  width: 95%;
+  height: 95%;
+}
