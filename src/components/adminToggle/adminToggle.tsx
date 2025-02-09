@@ -1,15 +1,15 @@
 import React from 'react'
-import { useAdmin } from '/Users/iiro/Documents/Projects/workplace-management/src/context/AdminContext.tsx'
-
+import { useAtom } from "jotai";
+import { adminAtom } from "/Users/iiro/Documents/Projects/workplace-management/src/state/adminAtom.tsx";
 
 const AdminToggle = () => {
-  const { isAdmin, toggleAdmin } = useAdmin();
+  const [isAdmin, setIsAdmin] = useAtom(adminAtom);
 
-  return (
-    <button onClick={toggleAdmin}>
-      {isAdmin ? "Disable Admin Mode" : "Enable Admin Mode"}
-    </button>
-  );
+  const toggleAdmin = () => {
+    setIsAdmin(!isAdmin);
+  };
+
+  return <button onClick={toggleAdmin}>{isAdmin ? "Disable Admin" : "Enable Admin"}</button>;
 };
 
 export default AdminToggle;
