@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from './ProjectList.module.css';
 import Project from '../Project/Project.tsx';
 import ProjectTitles from '../ProjectTitles/ProjectTitles.tsx'
-import { useAtom } from "jotai";
-import { adminAtom } from "/Users/iiro/Documents/Projects/workplace-management/src/state/adminAtom.tsx";
 
 const projects = [
     {
@@ -65,7 +63,6 @@ const projects = [
 ]
 
 const ProjectList: React.FC = () => {
-    const [isAdmin, setIsAdmin] = useAtom(adminAtom)
 
     /*const [projects, setProjects] = useState([]);
 
@@ -103,7 +100,6 @@ const ProjectList: React.FC = () => {
                     ))}
                 </div>
             </div>
-            {isAdmin && <p>Hello world</p>}
         </div>
     );
 };

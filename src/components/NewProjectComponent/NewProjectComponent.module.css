@@ -3,11 +3,10 @@
     justify-content: center;
     right: 0;
     width: 92%;
-    height: 70vh;
-    margin-top: 15px;
+    height: 10vh;
   }
 
-.projectlist {
+.content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,9 +14,4 @@
     background-color: silver;
     width: 70%;
     height: auto;
-}
-
-.listcontainer {
-  width: 95%;
-  height: 95%;
 }
