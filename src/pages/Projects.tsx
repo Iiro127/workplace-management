@@ -8,7 +8,7 @@ import styles from './styles.module.css'
 import { useAtomValue } from 'jotai';
 
 const Projects: React.FC = () => {
-  const { isAdmin } = useAtomValue(adminAtom);
+  const isAdmin = useAtomValue(adminAtom);
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
       <main>
         <div className={styles.container}>
           <h1>Projects page</h1>
-          <NewProjectComponent />
+          {isAdmin && <NewProjectComponent />}
           <ProjectList />
         </div>
       </main>
