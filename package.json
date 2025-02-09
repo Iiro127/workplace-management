@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "cra-template-typescript": "1.2.0",
+    "jotai": "^2.11.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.3",
