@@ -73,12 +73,13 @@ const NewProjectComponent = () => {
                 <NewProjectTitles />
                 <form onSubmit={handleSubmit}>
                     <div className={styles.details}>
-                        <div className={styles.titlecustomer}>
+                        <div className={styles.title}>
                             <input type="text" name="title" placeholder="Title" value={project.title} onChange={handleChange} required />
+                        </div>
+                        <div className={styles.customer}>
                             <input type="text" name="customer" placeholder="Customer" value={project.customer} onChange={handleChange} required />
                         </div>
-                        <div className={styles.estimates}>
-                            <input type="date" name="dateAdded" value={project.dateAdded} onChange={handleChange} required />
+                        <div className={styles.finishEstimate}>
                             <input type="date" name="finishEstimate" value={project.finishEstimate} onChange={handleChange} required />   
                         </div>
                     </div>

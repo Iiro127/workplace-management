@@ -18,19 +18,19 @@
 }
 
 .details {
-    display: flex;
-    flex-direction: row;
-}
-
-.titlecustomer {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.estimates {
+  width: 100%;
+  margin-bottom: 10pt;
   display: flex;
-  justify-content: center;
+  height: 10pt;
+  align-items: center;
+}
+
+.title,
+.customer,
+.finishEstimate {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
 }
 
 input {
