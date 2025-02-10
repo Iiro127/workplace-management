@@ -3,15 +3,36 @@
     justify-content: center;
     right: 0;
     width: 92%;
-    height: 10vh;
+    height: auto;
   }
 
 .content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     border-radius: 20pt;
     background-color: silver;
     width: 70%;
     height: auto;
+    padding-bottom: 10px;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+}
+
+.titlecustomer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.estimates {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  margin: 5px;
 }
