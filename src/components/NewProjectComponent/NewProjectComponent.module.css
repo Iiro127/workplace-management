@@ -36,3 +36,12 @@
 input {
   margin: 5px;
 }
+
+.dropdownResult {
+  width: 96%;
+  transition: color 0.1s ease; 
+}
+
+.dropdownResult:hover {
+  color: #4b4b4b;
+}
