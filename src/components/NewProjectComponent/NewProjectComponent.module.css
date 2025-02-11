@@ -9,7 +9,6 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     border-radius: 20pt;
     background-color: silver;
     width: 70%;
@@ -19,7 +18,15 @@
 
 .details {
   width: 100%;
-  margin-bottom: 10pt;
+  margin-bottom: 70pt;
+  display: flex;
+  height: 10pt;
+  align-items: center;
+}
+
+.workers {
+  width: 100%;
+  margin-bottom: 40pt;
   display: flex;
   height: 10pt;
   align-items: center;
@@ -28,9 +35,14 @@
 .title,
 .customer,
 .finishEstimate {
-    display: flex;
-    flex-direction: column;
-    width: 33%;
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.manager,
+.members {
+  width: 50%;
 }
 
 input {
@@ -44,4 +56,8 @@ input {
 
 .dropdownResult:hover {
   color: #4b4b4b;
+}
+
+.submitbutton {
+  margin: 10pt;
 }

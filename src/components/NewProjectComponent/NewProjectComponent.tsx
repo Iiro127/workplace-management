@@ -148,26 +148,52 @@ const NewProjectComponent = () => {
                         </div>
                     </div>
 
-                    <h3>Manager</h3>
-                    <input 
-                        type="text" 
-                        name="firstName" 
-                        placeholder="Search users" 
-                        value={searchTerm} 
-                        onChange={handleManagerChange} 
-                        required 
-                    />
-                    {showDropdown && (
-                        <ul className={styles.dropdown}>
-                            {filteredManagers.map(manager => (
-                                <p className={styles.dropdownResult} key={manager.id} onClick={() => selectManager(manager)}>
-                                    {manager.firstName} {manager.lastName}
-                                </p>
-                            ))}
-                        </ul>
-                    )}
-                    <p>Selected Manager: {project.manager.firstName} {project.manager.lastName}</p>
-                    <button type="submit">Create Project</button>
+                    <div className={styles.workers}>
+                        <div className={styles.manager}>
+                            <h3>Manager</h3>
+                            <input 
+                                type="text" 
+                                name="firstName" 
+                                placeholder="Search users" 
+                                value={searchTerm} 
+                                onChange={handleManagerChange} 
+                                required 
+                            />
+                            {showDropdown && (
+                                <ul className={styles.dropdown}>
+                                    {filteredManagers.map(manager => (
+                                        <p className={styles.dropdownResult} key={manager.id} onClick={() => selectManager(manager)}>
+                                            {manager.firstName} {manager.lastName}
+                                        </p>
+                                    ))}
+                                </ul>
+                            )}
+                            <h5>Manager for this project is {project.manager.firstName} {project.manager.lastName}</h5>
+                        </div>
+                        <div className={styles.members}>
+                        <h3>Manager</h3>
+                            <input 
+                                type="text" 
+                                name="firstName" 
+                                placeholder="Search users" 
+                                value={searchTerm} 
+                                onChange={handleManagerChange} 
+                                required 
+                            />
+                            {showDropdown && (
+                                <ul className={styles.dropdown}>
+                                    {filteredManagers.map(manager => (
+                                        <p className={styles.dropdownResult} key={manager.id} onClick={() => selectManager(manager)}>
+                                            {manager.firstName} {manager.lastName}
+                                        </p>
+                                    ))}
+                                </ul>
+                            )}
+                            <h5>Manager for this project is {project.manager.firstName} {project.manager.lastName}</h5>
+                        </div>
+                    </div>
+                    
+                    <button className={styles.submitbutton} type="submit">Create Project</button>
                 </form>
             </div>
         </div>
