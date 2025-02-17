@@ -18,9 +18,9 @@
 
 .details {
   width: 100%;
-  margin-bottom: 70pt;
+  margin-bottom: 30pt;
   display: flex;
-  height: 10pt;
+  height: auto;
   align-items: center;
 }
 
@@ -32,6 +32,13 @@
   align-items: center;
 }
 
+.workerChoices {
+  width: 100%;
+  margin-bottom: 10pt;
+  display: flex;
+  height: auto;
+}
+
 .title,
 .customer,
 .finishEstimate {
@@ -41,8 +48,20 @@
 }
 
 .manager,
-.members {
+.members,
+.memberResults {
   width: 50%;
+}
+
+.managerChoice {
+  width: 50%;
+  height: auto;
+}
+
+.memberslist {
+  width: 50%;
+  height: auto;
+  justify-content: center;
 }
 
 input {

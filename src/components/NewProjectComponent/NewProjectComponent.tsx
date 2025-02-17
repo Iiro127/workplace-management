@@ -125,6 +125,21 @@ const NewProjectComponent = () => {
         setShowMemberDropdown(false);
     };
 
+    const clearMembers = () => {
+        setProject((prev) => ({
+            ...prev,
+            members: []
+        }));
+    }
+
+    const removeManager = () => {
+        setProject((prev) => ({
+            ...prev,
+            manager: { id: "", firstName: "", lastName: "", isActive: true }
+        }));
+        setManagerSearchTerm("");
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -221,17 +236,20 @@ const NewProjectComponent = () => {
 
                     <div className={styles.workerChoices}>
                         <div className={styles.managerChoice}>
-                        <h5>
-                            {project.manager.id 
-                                ? `Manager for this project is ${project.manager.firstName} ${project.manager.lastName}` 
-                                : "No manager selected."
-                            }
-                        </h5>
+                            <h5>
+                                {project.manager.id 
+                                    ? `Manager for this project is ${project.manager.firstName} ${project.manager.lastName}` 
+                                    : "No manager selected."
+                                }
+                            </h5>
+
+                            <button onClick={removeManager}>Remove manager</button>
                         </div>
                         <div className={styles.memberslist}>
                             {project.members.map(member => (
                                 <h5>{member.firstName} {member.lastName}</h5>
                             ))}
+                        <button onClick={clearMembers}>Clear</button>
                         </div>
                     </div>
                     
