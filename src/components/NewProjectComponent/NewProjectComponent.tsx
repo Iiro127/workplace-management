@@ -60,9 +60,12 @@ const NewProjectComponent = () => {
         members: []
     });
 
-    const [searchTerm, setSearchTerm] = useState("");
+    const [managerSearchTerm, setManagerSearchTerm] = useState("");
+    const [memberSearchTerm, setMemberSearchTerm] = useState("");
     const [filteredManagers, setFilteredManagers] = useState([]);
-    const [showDropdown, setShowDropdown] = useState(false);
+    const [filteredMembers, setFilteredMembers] = useState([]);
+    const [showManagerDropdown, setShowManagerDropdown] = useState(false);
+    const [showMemberDropdown, setShowMemberDropdown] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -74,17 +77,33 @@ const NewProjectComponent = () => {
 
     const handleManagerChange = (e) => {
         const value = e.target.value;
-        setSearchTerm(value);
+        setManagerSearchTerm(value);
         
         if (value.length > 0) {
             const matches = projects.filter(manager =>
                 manager.firstName.toLowerCase().includes(value.toLowerCase())
             ).slice(0, 3);
             setFilteredManagers(matches);
-            setShowDropdown(true);
+            setShowManagerDropdown(true);
         } else {
             setFilteredManagers([]);
-            setShowDropdown(false);
+            setShowManagerDropdown(false);
+        }
+    };
+
+    const handleMemberChange = (e) => {
+        const value = e.target.value;
+        setMemberSearchTerm(value);
+        
+        if (value.length > 0) {
+            const matches = projects.filter(member =>
+                member.firstName.toLowerCase().includes(value.toLowerCase())
+            ).slice(0, 3);
+            setFilteredMembers(matches);
+            setShowMemberDropdown(true);
+        } else {
+            setFilteredManagers([]);
+            setShowMemberDropdown(false);
         }
     };
 
@@ -93,8 +112,17 @@ const NewProjectComponent = () => {
             ...prev,
             manager: { ...manager }
         }));
-        setSearchTerm(manager.firstName);
-        setShowDropdown(false);
+        setManagerSearchTerm(manager.firstName);
+        setShowManagerDropdown(false);
+    };
+
+    const addMember = (member) => {
+        setProject((prev) => ({
+            ...prev,
+            members: [...prev.members, member]
+        }));
+        setMemberSearchTerm(member.firstName);
+        setShowMemberDropdown(false);
     };
 
     const handleSubmit = async (e) => {
@@ -155,11 +183,11 @@ const NewProjectComponent = () => {
                                 type="text" 
                                 name="firstName" 
                                 placeholder="Search users" 
-                                value={searchTerm} 
+                                value={managerSearchTerm} 
                                 onChange={handleManagerChange} 
                                 required 
                             />
-                            {showDropdown && (
+                            {showManagerDropdown && (
                                 <ul className={styles.dropdown}>
                                     {filteredManagers.map(manager => (
                                         <p className={styles.dropdownResult} key={manager.id} onClick={() => selectManager(manager)}>
@@ -168,28 +196,42 @@ const NewProjectComponent = () => {
                                     ))}
                                 </ul>
                             )}
-                            <h5>Manager for this project is {project.manager.firstName} {project.manager.lastName}</h5>
                         </div>
                         <div className={styles.members}>
-                        <h3>Manager</h3>
+                        <h3>Members</h3>
                             <input 
                                 type="text" 
                                 name="firstName" 
                                 placeholder="Search users" 
-                                value={searchTerm} 
-                                onChange={handleManagerChange} 
+                                value={memberSearchTerm} 
+                                onChange={handleMemberChange} 
                                 required 
                             />
-                            {showDropdown && (
+                            {showMemberDropdown && (
                                 <ul className={styles.dropdown}>
-                                    {filteredManagers.map(manager => (
-                                        <p className={styles.dropdownResult} key={manager.id} onClick={() => selectManager(manager)}>
-                                            {manager.firstName} {manager.lastName}
+                                    {filteredMembers.map(member => (
+                                        <p className={styles.dropdownResult} key={member.id} onClick={() => addMember(member)}>
+                                            {member.firstName} {member.lastName}
                                         </p>
                                     ))}
                                 </ul>
                             )}
-                            <h5>Manager for this project is {project.manager.firstName} {project.manager.lastName}</h5>
+                        </div>
+                    </div>
+
+                    <div className={styles.workerChoices}>
+                        <div className={styles.managerChoice}>
+                        <h5>
+                            {project.manager.id 
+                                ? `Manager for this project is ${project.manager.firstName} ${project.manager.lastName}` 
+                                : "No manager selected."
+                            }
+                        </h5>
+                        </div>
+                        <div className={styles.memberslist}>
+                            {project.members.map(member => (
+                                <h5>{member.firstName} {member.lastName}</h5>
+                            ))}
                         </div>
                     </div>
                     
