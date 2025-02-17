@@ -3,7 +3,7 @@
     justify-content: center;
     right: 0;
     width: 92%;
-    height: auto;
+    max-height: 700px;
   }
 
 .content {
@@ -12,7 +12,6 @@
     border-radius: 20pt;
     background-color: silver;
     width: 70%;
-    height: auto;
     padding-bottom: 10px;
 }
 
