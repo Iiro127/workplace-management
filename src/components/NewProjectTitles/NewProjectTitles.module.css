@@ -1,0 +1,15 @@
+.titles {
+    width: 100%;
+    margin-bottom: 10pt;
+    display: flex;
+    height: 10pt;
+    align-items: center;
+}
+
+.titleContainer,
+.customerContainer,
+.finishEstimateContainer {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+}

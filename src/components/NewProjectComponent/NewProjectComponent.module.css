@@ -1,0 +1,81 @@
+.componentcontainer {
+    display: flex;
+    justify-content: center;
+    right: 0;
+    width: 92%;
+    max-height: 700px;
+  }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20pt;
+    background-color: silver;
+    width: 70%;
+    padding-bottom: 10px;
+}
+
+.details {
+  width: 100%;
+  margin-bottom: 30pt;
+  display: flex;
+  height: auto;
+  align-items: center;
+}
+
+.workers {
+  width: 100%;
+  margin-bottom: 40pt;
+  display: flex;
+  height: 10pt;
+  align-items: center;
+}
+
+.workerChoices {
+  width: 100%;
+  margin-bottom: 10pt;
+  display: flex;
+  height: auto;
+}
+
+.title,
+.customer,
+.finishEstimate {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.manager,
+.members,
+.memberResults {
+  width: 50%;
+}
+
+.managerChoice {
+  width: 50%;
+  height: auto;
+}
+
+.memberslist {
+  width: 50%;
+  height: auto;
+  justify-content: center;
+}
+
+input {
+  margin: 5px;
+}
+
+.dropdownResult {
+  width: 96%;
+  transition: color 0.1s ease; 
+}
+
+.dropdownResult:hover {
+  color: #4b4b4b;
+}
+
+button {
+  margin: 10pt;
+}

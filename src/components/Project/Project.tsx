@@ -14,13 +14,13 @@ interface ProjectProps {
     customer: string;
     dateAdded: string;
     finishEstimate: string;
-    phase: string;
+    status: string;
     manager: User;
     members: User[];
 }
 
 
-const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, phase, manager, members }) => {
+const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, status, manager, members }) => {
     return (
         <div className={styles.projectitem}>
             <div className={styles.maininfo}>
@@ -34,9 +34,9 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                 <div className={styles.finishEstimateContainer}>
                     <p>{finishEstimate}</p>
                 </div>
-                <div className={styles.phaseContainer}>
-                    <div className={`${styles.phase} ${styles[phase.toLowerCase()]}`}>
-                        <p>{phase}</p>
+                <div className={styles.statusContainer}>
+                    <div className={`${styles.status} ${styles[status.toLowerCase()]}`}>
+                        <p>{status}</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,6 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     ))}
                 </div>
             </div>
-
         </div>
     );
 };

@@ -1,0 +1,19 @@
+html, body {
+    overflow: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    width: 92%;
+    height: 90vh;
+    overflow: auto;
+    padding-bottom: 20px;
+}
