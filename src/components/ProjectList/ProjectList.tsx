@@ -29,7 +29,7 @@ const projects = [
                 "lastName": "Smith"
             }
         ],
-        "phase": "Planning",
+        "status": "Planning",
         "title": "Test test"
     },
     {
@@ -57,13 +57,12 @@ const projects = [
                 "lastName": "Smith"
             }
         ],
-        "phase": "Completed",
+        "status": "Completed",
         "title": "Another test"
     }
 ]
 
 const ProjectList: React.FC = () => {
-
     /*const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -93,7 +92,7 @@ const ProjectList: React.FC = () => {
                             customer={project.customer}
                             dateAdded={project.dateAdded}
                             finishEstimate={project.finishEstimate}
-                            phase={project.phase}
+                            status={project.status}
                             manager={project.manager}
                             members={project.members}
                         />

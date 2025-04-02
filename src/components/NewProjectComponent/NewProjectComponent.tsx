@@ -141,9 +141,7 @@ const NewProjectComponent = () => {
     }
 
     const handleSubmit = async (e) => {
-        alert(JSON.stringify(project, null, 2)); // Convert object to readable string
-
-        /*e.preventDefault();
+        e.preventDefault();
         try {
             const response = await fetch("localhost:8080/projects", {
                 method: "POST",
@@ -155,7 +153,7 @@ const NewProjectComponent = () => {
         } catch (error) {
             console.error(error);
             alert("Error creating project");
-        }*/
+        }
     };
 
     return (
