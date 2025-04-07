@@ -3,16 +3,6 @@ import Keycloak from 'keycloak-js';
 
 let keycloakInstance;
 
-function getKeycloak() {
-  if (!keycloakInstance) {
-    keycloakInstance = new Keycloak({
-      url: "http://localhost:8081/",
-      realm: "time-management-realm",
-      clientId: "time-management-client",
-    });
-  }
-  return keycloakInstance;
-}
 
 const SecuredRoute = ({ children }) => {
   const [keycloak, setKeycloak] = useState(null);
@@ -23,11 +13,7 @@ const SecuredRoute = ({ children }) => {
     const kc = getKeycloak();
 
     kc.onAuthError = (errorData) => {
-      console.error("🔥 Auth Error:", errorData);
-    };
-
-    kc.onReady = (authenticated) => {
-      console.log("🟢 Keycloak Ready:", authenticated);
+      console.error("Auth Error:", errorData);
     };
 
     kc.init({
@@ -38,12 +24,14 @@ const SecuredRoute = ({ children }) => {
       enableLogging: true
     })
     .then((authenticated) => {
-      console.log("✅ Authenticated:", authenticated);
+      console.log("Authenticated:", authenticated);
       setKeycloak(kc);
       setAuthenticated(authenticated);
+
+      console.log(loadUserInfo(kc))
     })
     .catch((err) => {
-      console.error("❌ Keycloak init failed", err);
+      console.error("Keycloak init failed", err);
     })
     .finally(() => {
       setLoading(false);
@@ -57,9 +45,35 @@ const SecuredRoute = ({ children }) => {
     return <div>Redirecting to login...</div>;
   }
 
-  if (!isAuthenticated) return <div>Keycloak error; you are not authenticated.</div>;
+  if (!isAuthenticated) return <div>Auth error.</div>;
 
   return children;
 };
+
+function getKeycloak() {
+  if (!keycloakInstance) {
+    keycloakInstance = new Keycloak({
+      url: "http://localhost:8081/",
+      realm: "time-management-realm",
+      clientId: "time-management-client",
+    });
+  }
+  return keycloakInstance;
+}
+
+export async function loadUserInfo(keycloakInstance) {
+  if (!keycloakInstance || !keycloakInstance.authenticated) {
+    throw new Error("Keycloak is not initialized or user not authenticated.");
+  }
+
+  try {
+    const userInfo = await keycloakInstance.loadUserInfo();
+    console.log(JSON.stringify(userInfo, null, 2));
+    return userInfo;
+  } catch (error) {
+    console.error("Error loading user info:", error);
+    throw error;
+  }
+}
 
 export default SecuredRoute;
