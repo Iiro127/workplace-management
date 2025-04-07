@@ -1,9 +1,39 @@
+// 📦 External Imports
 import React, { useState, useEffect } from 'react';
 import Keycloak from 'keycloak-js';
 
+// 👑 Global Singleton Instance
 let keycloakInstance;
 
+// ⚙️ Keycloak Getter
+function getKeycloak() {
+  if (!keycloakInstance) {
+    keycloakInstance = new Keycloak({
+      url: "http://localhost:8081/",
+      realm: "time-management-realm",
+      clientId: "time-management-client",
+    });
+  }
+  return keycloakInstance;
+}
 
+// 🔍 User Info Fetcher
+export async function loadUserInfo(keycloakInstance) {
+  if (!keycloakInstance || !keycloakInstance.authenticated) {
+    throw new Error("Keycloak is not initialized or user not authenticated.");
+  }
+
+  try {
+    const userInfo = await keycloakInstance.loadUserInfo();
+    console.log("User Info (JSON):", JSON.stringify(userInfo, null, 2));
+    return userInfo;
+  } catch (error) {
+    console.error("Error loading user info:", error);
+    throw error;
+  }
+}
+
+// 🔐 Main Component
 const SecuredRoute = ({ children }) => {
   const [keycloak, setKeycloak] = useState(null);
   const [isAuthenticated, setAuthenticated] = useState(false);
@@ -23,12 +53,15 @@ const SecuredRoute = ({ children }) => {
       checkLoginIframe: true,
       enableLogging: true
     })
-    .then((authenticated) => {
+    .then(async (authenticated) => {
       console.log("Authenticated:", authenticated);
       setKeycloak(kc);
       setAuthenticated(authenticated);
 
-      console.log(loadUserInfo(kc))
+      if (authenticated) {
+        const userInfo = await loadUserInfo(kc);
+        console.log("Fetched user info:", userInfo);
+      }
     })
     .catch((err) => {
       console.error("Keycloak init failed", err);
@@ -49,31 +82,5 @@ const SecuredRoute = ({ children }) => {
 
   return children;
 };
-
-function getKeycloak() {
-  if (!keycloakInstance) {
-    keycloakInstance = new Keycloak({
-      url: "http://localhost:8081/",
-      realm: "time-management-realm",
-      clientId: "time-management-client",
-    });
-  }
-  return keycloakInstance;
-}
-
-export async function loadUserInfo(keycloakInstance) {
-  if (!keycloakInstance || !keycloakInstance.authenticated) {
-    throw new Error("Keycloak is not initialized or user not authenticated.");
-  }
-
-  try {
-    const userInfo = await keycloakInstance.loadUserInfo();
-    console.log(JSON.stringify(userInfo, null, 2));
-    return userInfo;
-  } catch (error) {
-    console.error("Error loading user info:", error);
-    throw error;
-  }
-}
 
 export default SecuredRoute;
