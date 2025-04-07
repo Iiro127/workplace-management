@@ -25,7 +25,7 @@ export async function loadUserInfo(keycloakInstance) {
 
   try {
     const userInfo = await keycloakInstance.loadUserInfo();
-    console.log("User Info (JSON):", JSON.stringify(userInfo, null, 2));
+    console.log(JSON.stringify(userInfo, null, 2));
     return userInfo;
   } catch (error) {
     console.error("Error loading user info:", error);
@@ -57,11 +57,7 @@ const SecuredRoute = ({ children }) => {
       console.log("Authenticated:", authenticated);
       setKeycloak(kc);
       setAuthenticated(authenticated);
-
-      if (authenticated) {
-        const userInfo = await loadUserInfo(kc);
-        console.log("Fetched user info:", userInfo);
-      }
+      await loadUserInfo(kc);
     })
     .catch((err) => {
       console.error("Keycloak init failed", err);
