@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAtom } from "jotai";
-import { adminAtom } from "/Users/iiro/Documents/Projects/workplace-management/src/state/adminAtom.tsx";
+import { adminAtom } from "/Users/iiro/Documents/Projects/workplace-management/src/atoms/adminAtom.tsx";
 
 const AdminToggle = () => {
   const [isAdmin, setIsAdmin] = useAtom(adminAtom);

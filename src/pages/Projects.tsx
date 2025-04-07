@@ -1,5 +1,5 @@
 import React from 'react'
-import { adminAtom } from '../state/adminAtom.tsx';
+import { adminAtom } from '../atoms/adminAtom.tsx';
 import Navbar from '../components/Navbar/Navbar.tsx';
 import Sidenav from '../components/Sidenav/Sidenav.tsx';
 import ProjectList from '../components/ProjectList/ProjectList.tsx';
