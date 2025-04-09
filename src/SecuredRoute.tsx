@@ -39,7 +39,7 @@ const SecuredRoute = ({ children }) => {
   const [keycloak, setKeycloak] = useState(null);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [auth, setAuth] = useAtom(authAtom);
+  const [setAuth] = useAtom(authAtom);
   const setUserProfile = useSetAtom(userProfileAtom);
 
   useEffect(() => {
