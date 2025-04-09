@@ -5,6 +5,7 @@ export type Auth = {
   tokenRaw: string | undefined;
   logout: () => void;
   token: KeycloakTokenParsed | undefined;
+  isAdmin: boolean;
 };
 
 export const authAtom = atom<Auth | undefined>(undefined);

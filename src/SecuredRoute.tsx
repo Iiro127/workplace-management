@@ -1,6 +1,8 @@
 // 📦 External Imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Keycloak from 'keycloak-js';
+import { useAtom, useSetAtom } from "jotai";
+import { authAtom, userProfileAtom } from "./atoms/authAtom.tsx";
 
 // 👑 Global Singleton Instance
 let keycloakInstance;
@@ -33,11 +35,12 @@ export async function loadUserInfo(keycloakInstance) {
   }
 }
 
-// 🔐 Main Component
 const SecuredRoute = ({ children }) => {
   const [keycloak, setKeycloak] = useState(null);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [setAuth] = useAtom(authAtom);
+  const setUserProfile = useSetAtom(userProfileAtom);
 
   useEffect(() => {
     const kc = getKeycloak();
@@ -57,8 +60,21 @@ const SecuredRoute = ({ children }) => {
       console.log("Authenticated:", authenticated);
       setKeycloak(kc);
       setAuthenticated(authenticated);
-      await loadUserInfo(kc);
+    
+      const userInfo = await loadUserInfo(kc);
+    
+      const isAdmin = kc.tokenParsed?.preferred_username === "admin";
+    
+      setAuth({
+        token: kc?.tokenParsed,
+        tokenRaw: kc?.token,
+        logout: () => kc?.logout({ redirectUri: window.location.origin }),
+        isAdmin,
+      });
+    
+      setUserProfile(userInfo);
     })
+    
     .catch((err) => {
       console.error("Keycloak init failed", err);
     })

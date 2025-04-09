@@ -1,23 +1,18 @@
 .navbar {
     height: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     background-color: #007bff;
     padding: 1rem 2rem;
     color: white;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
 .navLinks {
     list-style: none;
     display: flex;
     gap: 1rem;
-    margin: 0;
+    right: 0;
     padding: 0;
 }
 

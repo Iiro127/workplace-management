@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar.tsx';
-import Sidenav from '../components/Sidenav/Sidenav.tsx';
+import Navbar from '../components/Navigation/Navbar/Navbar.tsx';
+import Sidenav from '../components/Navigation/Sidenav/Sidenav.tsx';
 
 const Schedule: React.FC = () => {
   return (
