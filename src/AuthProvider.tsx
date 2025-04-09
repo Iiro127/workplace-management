@@ -32,11 +32,6 @@ const AuthProvider = ({ children }: Props) => {
     setUserProfile(keycloak.profile);
   }, [auth]);
 
-  const clearAuthData = useCallback(() => {
-    setAuth(undefined);
-    setUserProfile(undefined);
-  }, [auth]);
-
   const initAuth = useCallback(async (): Promise<void> => {
     try {
         console.log("Attempting Keycloak init with config:", keycloakConfig);
@@ -44,8 +39,8 @@ const AuthProvider = ({ children }: Props) => {
       const authenticated = await keycloak.init({
         onLoad: "check-sso",
         checkLoginIframe: true, // enable this unless you *really* don't want iframe login check
-        pkceMethod: "S256",     // if you're using public clients
-        //flow: "standard",
+        pkceMethod: "S256",
+        flow: "standard",
       });
   
       console.log("Keycloak initialized:", authenticated);
