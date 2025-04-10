@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from './ProjectList.module.css';
 import Project from '../Project/Project.tsx';
 import ProjectTitles from '../ProjectTitles/ProjectTitles.tsx'
+import { useAtom } from "jotai";
+import { authAtom } from "../../../atoms/authAtom.tsx";
 
-const projects = [
+/*const projects = [
     {
         "customer": "Kesko",
         "dateAdded": "2023-10-15",
@@ -60,25 +62,40 @@ const projects = [
         "status": "Completed",
         "title": "Another test"
     }
-]
+]*/
 
 const ProjectList: React.FC = () => {
-    /*const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState([]);
+    const [auth] = useAtom(authAtom);
+    let address: string = '';
 
     useEffect(() => {
-        const fetchProjects = async () => {
-        try {
-            const response = await fetch("http://localhost:8080/projects");
-            const data = await response.json();
-            setProjects(data);
-            console.log(data);
-        } catch (error) {
-            console.error("Error fetching projects:", error);
+    const fetchProjects = async () => {
+        if (auth?.isAdmin){
+            address = 'http://localhost:8080/projects'
+        } else {
+            address = 'http://localhost:8080/projects/users'
         }
-        };
+        
+        try {
+        const response = await fetch(address, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${auth?.tokenRaw}`,
+            }
+        });
 
-        fetchProjects();
-    }, []);*/
+        const data = await response.json();
+        setProjects(data);
+        console.log(data);
+        } catch (error) {
+        console.error("Error fetching projects:", error);
+        }
+    };
+
+    fetchProjects();
+    }, [auth]);
 
     return (
         <div className={styles.componentcontainer}>

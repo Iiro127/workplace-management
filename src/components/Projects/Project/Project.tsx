@@ -35,9 +35,9 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     <p>{finishEstimate}</p>
                 </div>
                 <div className={styles.statusContainer}>
-                    <div className={`${styles.status} ${styles[status.toLowerCase()]}`}>
-                        <p>{status}</p>
-                    </div>
+                <div className={`${styles.status} ${styles[status.toLowerCase().replace(/\s/g, '')]}`}>
+                    <p>{status}</p>
+                </div>
                 </div>
             </div>
             <div className={styles.expandinfo}>
