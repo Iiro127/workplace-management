@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home.tsx';
 import Projects from './pages/Projects.tsx';
 import Schedule from './pages/Schedule.tsx'
-import SecuredRoute from './SecuredRoute.tsx';
+import AuthProvider from './AuthProvider.tsx';
 
 function App() {
   return (
     <Router>
-      <SecuredRoute>
+      <AuthProvider>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -17,7 +17,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </div>
-      </SecuredRoute>
+      </AuthProvider>
     </Router>
   );
 }

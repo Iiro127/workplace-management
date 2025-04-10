@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Keycloak from 'keycloak-js';
 import { useAtom, useSetAtom } from "jotai";
-import { authAtom, userProfileAtom } from "./atoms/authAtom.js";
+import { authAtom, userProfileAtom } from "./atoms/authAtom.tsx";
 
 // 👑 Global Singleton Instance
 let keycloakInstance;

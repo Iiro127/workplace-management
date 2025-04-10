@@ -3,7 +3,7 @@ import styles from './NewProjectComponent.module.css'
 import NewProjectTitles from '../NewProjectTitles/NewProjectTitles.tsx';
 import { useState } from 'react'
 
-const projects = [
+const dummyUsers = [
     {
         "id": "123abc",
         "firstName": "Mario",
@@ -43,19 +43,19 @@ interface ProjectProps {
     customer: string;
     dateAdded: string;
     finishEstimate: string;
-    phase: string;
+    status: string;
     manager: User;
     members: User[];
 }
 
 const NewProjectComponent = () => {
     const [project, setProject] = useState({
-        id: "",
+        id: "asasasas",
         title: "",
         customer: "",
-        dateAdded: "",
+        dateAdded: new Date().toISOString().split('T')[0],
         finishEstimate: "",
-        phase: "Planning",
+        status: "Planning",
         manager: { id: "", firstName: "", lastName: "", isActive: true },
         members: []
     });
@@ -66,6 +66,7 @@ const NewProjectComponent = () => {
     const [filteredMembers, setFilteredMembers] = useState([]);
     const [showManagerDropdown, setShowManagerDropdown] = useState(false);
     const [showMemberDropdown, setShowMemberDropdown] = useState(false);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -80,7 +81,7 @@ const NewProjectComponent = () => {
         setManagerSearchTerm(value);
         
         if (value.length > 0) {
-            const matches = projects.filter(manager =>
+            const matches = dummyUsers.filter(manager =>
                 manager.firstName.toLowerCase().includes(value.toLowerCase())
             ).slice(0, 3);
             setFilteredManagers(matches);
@@ -96,7 +97,7 @@ const NewProjectComponent = () => {
         setMemberSearchTerm(value);
         
         if (value.length > 0) {
-            const matches = projects.filter(member =>
+            const matches = dummyUsers.filter(member =>
                 member.firstName.toLowerCase().includes(value.toLowerCase())
             ).slice(0, 3);
             setFilteredMembers(matches);
@@ -141,9 +142,10 @@ const NewProjectComponent = () => {
     }
 
     const handleSubmit = async (e) => {
+        console.log(JSON.stringify(project))
         e.preventDefault();
         try {
-            const response = await fetch("localhost:8080/projects", {
+            const response = await fetch("http://localhost:8080/projects", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(project)
