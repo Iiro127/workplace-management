@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './NewProjectComponent.module.css'
 import NewProjectTitles from '../NewProjectTitles/NewProjectTitles.tsx';
 import { useState } from 'react'
+import { User } from '../../../types/User.tsx';
 
 const dummyUsers = [
     {
@@ -29,24 +30,6 @@ const dummyUsers = [
         "isActive": true
     }
 ]
-
-interface User {
-    id: string;
-    firstName: string;
-    lastName: string;
-    isActive: boolean;
-}
-
-interface ProjectProps {
-    id: string;
-    title: string;
-    customer: string;
-    dateAdded: string;
-    finishEstimate: string;
-    status: string;
-    manager: User;
-    members: User[];
-}
 
 const NewProjectComponent = () => {
     const [project, setProject] = useState({
@@ -147,7 +130,9 @@ const NewProjectComponent = () => {
         try {
             const response = await fetch("http://localhost:8080/projects", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
                 body: JSON.stringify(project)
             });
             if (!response.ok) throw new Error("Failed to create project");
