@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Keycloak from 'keycloak-js';
 import { useAtom, useSetAtom } from "jotai";
 import { authAtom, userProfileAtom } from "./atoms/authAtom.tsx";
+import { saveUserToDB } from './services/userService.tsx';
 
 // 👑 Global Singleton Instance
 let keycloakInstance;
@@ -27,7 +28,6 @@ export async function loadUserInfo(keycloakInstance) {
 
   try {
     const userInfo = await keycloakInstance.loadUserInfo();
-    console.log(JSON.stringify(userInfo, null, 2));
     return userInfo;
   } catch (error) {
     console.error("Error loading user info:", error);
@@ -57,7 +57,6 @@ const SecuredRoute = ({ children }) => {
       enableLogging: true
     })
     .then(async (authenticated) => {
-      console.log("Authenticated:", authenticated);
       setKeycloak(kc);
       setAuthenticated(authenticated);
     
@@ -71,8 +70,9 @@ const SecuredRoute = ({ children }) => {
         logout: () => kc?.logout({ redirectUri: window.location.origin }),
         isAdmin,
       });
-    
+      
       setUserProfile(userInfo);
+      saveUserToDB(userInfo)
     })
     
     .catch((err) => {
