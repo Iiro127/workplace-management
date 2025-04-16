@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Project.module.css';
+import StatusContainer from './StatusContainer/StatusContainer.tsx';
 
 interface User {
     id: string;
@@ -35,9 +36,7 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     <p>{finishEstimate}</p>
                 </div>
                 <div className={styles.statusContainer}>
-                <div className={`${styles.status} ${styles[status.toLowerCase().replace(/\s/g, '')]}`}>
-                    <p>{status}</p>
-                </div>
+                <StatusContainer status={status} />
                 </div>
             </div>
             <div className={styles.expandinfo}>
