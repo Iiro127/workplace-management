@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './StatusContainer.module.css'
 import { useAtom } from 'jotai';
 import { authAtom } from '../../../../atoms/authAtom.tsx'
+import { updateProjectStatus } from '../../../../services/projectService.tsx';
 
 interface statusProps {
     status: string;
@@ -13,6 +14,7 @@ const StatusContainer: React.FC<statusProps> = ({ status }) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrentStatus(e.target.value);
+        updateProjectStatus(null, e.target.value)
     };
 
     return (
