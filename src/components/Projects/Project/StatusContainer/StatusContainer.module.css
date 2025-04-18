@@ -1,18 +1,7 @@
-.statusContainer {
-    font-size: 0.9rem;
-    padding: 5px 10px;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
 .status {
     padding: 1px 2px;
     font-size: 0.9rem;
     border-radius: 12pt;
-    text-align: center;
     min-width: 50px;
     font-weight: bold;
 }

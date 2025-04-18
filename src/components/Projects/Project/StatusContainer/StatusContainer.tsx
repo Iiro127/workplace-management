@@ -16,16 +16,17 @@ const StatusContainer: React.FC<statusProps> = ({ status }) => {
     };
 
     return (
-        <div className={styles.statusContainer}>
+        <div>
             <div className={`${styles.status} ${styles[status.toLowerCase().replace(/\s/g, '')]}`}>
                 <p>{status}</p>
+                {auth?.isAdmin && 
+                <select onChange={handleChange} value={currentStatus}>
+                    <option value="Planning">Planning</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                }
             </div>
-
-            <select onChange={handleChange} value={currentStatus}>
-                <option value="Planning">Planning</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-            </select>
         </div>
     )
 }
