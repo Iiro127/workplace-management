@@ -35,9 +35,7 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                 <div className={styles.finishEstimateContainer}>
                     <p>{finishEstimate}</p>
                 </div>
-                <div className={styles.statusContainer}>
                 <StatusContainer status={status} />
-                </div>
             </div>
             <div className={styles.expandinfo}>
                 <div className={styles.managercontainer}>
