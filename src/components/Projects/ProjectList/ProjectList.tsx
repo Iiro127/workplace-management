@@ -104,7 +104,7 @@ const ProjectList: React.FC = () => {
                     <ProjectTitles />
                     {projects.map((project) => (
                         <Project 
-                            key={project.id} 
+                            id={project.id} 
                             title={project.title} 
                             customer={project.customer}
                             dateAdded={project.dateAdded}

@@ -21,7 +21,7 @@ interface ProjectProps {
 }
 
 
-const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, status, manager, members }) => {
+const Project: React.FC<ProjectProps> = ({ id, title, customer, dateAdded, finishEstimate, status, manager, members }) => {
     return (
         <div className={styles.projectitem}>
             <div className={styles.maininfo}>
@@ -36,7 +36,7 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     <p>{finishEstimate}</p>
                 </div>
                 <div className={styles.statusContainer}>
-                <StatusContainer status={status} />
+                <StatusContainer status={status} id={id} />
                 </div>
             </div>
             <div className={styles.expandinfo}>

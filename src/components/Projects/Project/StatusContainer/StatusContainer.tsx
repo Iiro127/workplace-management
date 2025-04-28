@@ -6,15 +6,16 @@ import { updateProjectStatus } from '../../../../services/projectService.tsx';
 
 interface statusProps {
     status: string;
+    id: string;
 }
 
-const StatusContainer: React.FC<statusProps> = ({ status }) => {
+const StatusContainer: React.FC<statusProps> = ({ status, id }) => {
     const [auth] = useAtom(authAtom)
     const [currentStatus, setCurrentStatus] = useState(status);
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrentStatus(e.target.value);
-        updateProjectStatus(null, e.target.value)
+        updateProjectStatus(id, e.target.value)
     };
 
     return (
