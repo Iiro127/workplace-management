@@ -5,10 +5,8 @@ import { useAtom, useSetAtom } from "jotai";
 import { authAtom, userProfileAtom } from "./atoms/authAtom.tsx";
 import { saveUserToDB } from './services/userService.tsx';
 
-// 👑 Global Singleton Instance
 let keycloakInstance;
 
-// ⚙️ Keycloak Getter
 function getKeycloak() {
   if (!keycloakInstance) {
     keycloakInstance = new Keycloak({
@@ -20,7 +18,7 @@ function getKeycloak() {
   return keycloakInstance;
 }
 
-// 🔍 User Info Fetcher
+// User Info Fetcher
 export async function loadUserInfo(keycloakInstance) {
   if (!keycloakInstance || !keycloakInstance.authenticated) {
     throw new Error("Keycloak is not initialized or user not authenticated.");

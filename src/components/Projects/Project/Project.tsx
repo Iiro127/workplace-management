@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Project.module.css';
+import StatusContainer from './StatusContainer/StatusContainer.tsx';
 
 interface User {
     id: string;
@@ -8,7 +9,7 @@ interface User {
     isActive: boolean;
 }
 
-interface ProjectProps {
+export interface ProjectProps {
     id: string;
     title: string;
     customer: string;
@@ -20,7 +21,7 @@ interface ProjectProps {
 }
 
 
-const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEstimate, status, manager, members }) => {
+const Project: React.FC<ProjectProps> = ({ id, title, customer, dateAdded, finishEstimate, status, manager, members }) => {
     return (
         <div className={styles.projectitem}>
             <div className={styles.maininfo}>
@@ -35,9 +36,7 @@ const Project: React.FC<ProjectProps> = ({ title, customer, dateAdded, finishEst
                     <p>{finishEstimate}</p>
                 </div>
                 <div className={styles.statusContainer}>
-                <div className={`${styles.status} ${styles[status.toLowerCase().replace(/\s/g, '')]}`}>
-                    <p>{status}</p>
-                </div>
+                <StatusContainer status={status} project={{ id, title, customer, dateAdded, finishEstimate, status, manager, members }} />
                 </div>
             </div>
             <div className={styles.expandinfo}>

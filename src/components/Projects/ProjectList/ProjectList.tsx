@@ -5,7 +5,7 @@ import ProjectTitles from '../ProjectTitles/ProjectTitles.tsx'
 import { useAtom } from "jotai";
 import { authAtom } from "../../../atoms/authAtom.tsx";
 
-/*const projects = [
+const projects = [
     {
         "customer": "Kesko",
         "dateAdded": "2023-10-15",
@@ -62,7 +62,7 @@ import { authAtom } from "../../../atoms/authAtom.tsx";
         "status": "Completed",
         "title": "Another test"
     }
-]*/
+]
 
 const ProjectList: React.FC = () => {
     const [projects, setProjects] = useState([]);
@@ -104,7 +104,7 @@ const ProjectList: React.FC = () => {
                     <ProjectTitles />
                     {projects.map((project) => (
                         <Project 
-                            key={project.id} 
+                            id={project.id} 
                             title={project.title} 
                             customer={project.customer}
                             dateAdded={project.dateAdded}
