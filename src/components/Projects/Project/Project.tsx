@@ -9,7 +9,7 @@ interface User {
     isActive: boolean;
 }
 
-interface ProjectProps {
+export interface ProjectProps {
     id: string;
     title: string;
     customer: string;
@@ -36,7 +36,7 @@ const Project: React.FC<ProjectProps> = ({ id, title, customer, dateAdded, finis
                     <p>{finishEstimate}</p>
                 </div>
                 <div className={styles.statusContainer}>
-                <StatusContainer status={status} id={id} />
+                <StatusContainer status={status} project={{ id, title, customer, dateAdded, finishEstimate, status, manager, members }} />
                 </div>
             </div>
             <div className={styles.expandinfo}>

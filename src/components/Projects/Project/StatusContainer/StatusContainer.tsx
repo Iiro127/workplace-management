@@ -3,19 +3,22 @@ import styles from './StatusContainer.module.css'
 import { useAtom } from 'jotai';
 import { authAtom } from '../../../../atoms/authAtom.tsx'
 import { updateProjectStatus } from '../../../../services/projectService.tsx';
+import { ProjectProps } from '../Project.tsx';
 
-interface statusProps {
+interface StatusProps {
     status: string;
-    id: string;
+    project: ProjectProps;
 }
 
-const StatusContainer: React.FC<statusProps> = ({ status, id }) => {
+const StatusContainer: React.FC<StatusProps> = ({ status, project }) => {
     const [auth] = useAtom(authAtom)
     const [currentStatus, setCurrentStatus] = useState(status);
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrentStatus(e.target.value);
-        updateProjectStatus(id, e.target.value)
+
+        const updatedProject = { ...project, status: e.target.value };
+        updateProjectStatus(updatedProject, auth?.tokenRaw);
     };
 
     return (
