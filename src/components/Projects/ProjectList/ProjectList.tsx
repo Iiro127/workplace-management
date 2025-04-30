@@ -25,8 +25,6 @@ const ProjectList: React.FC = () => {
 
     return (
         <div className={styles.componentcontainer}>
-            <button onClick={fetchProjects}>Refresh Projects</button>
-
             <div className={styles.projectlist}>
                 <div className={styles.listcontainer}>
                     <ProjectTitles />

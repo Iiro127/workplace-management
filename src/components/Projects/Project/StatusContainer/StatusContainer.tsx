@@ -23,8 +23,8 @@ const StatusContainer: React.FC<StatusProps> = ({ status, project }) => {
 
     return (
         <div>
-            <div className={`${styles.status} ${styles[status.toLowerCase().replace(/\s/g, '')]}`}>
-                <p>{status}</p>
+            <div className={`${styles.status} ${styles[currentStatus.toLowerCase().replace(/\s/g, '')]}`}>
+                <p>{currentStatus}</p>
                 {auth?.isAdmin && 
                 <select onChange={handleChange} value={currentStatus}>
                     <option value="Planning">Planning</option>
