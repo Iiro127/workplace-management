@@ -1,6 +1,7 @@
 .titles {
-    width: 100%;
+    width: 95%;
     margin-bottom: 10pt;
+    margin-left: 5%;
     display: flex;
     height: 10pt;
     align-items: center;

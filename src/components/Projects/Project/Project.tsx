@@ -25,6 +25,7 @@ const Project: React.FC<ProjectProps> = ({ id, title, customer, dateAdded, finis
     return (
         <div className={styles.projectitem}>
             <div className={styles.maininfo}>
+                <div className={styles.deleteButton}>Delete</div>
                 <div className={styles.details}>
                     <h2 className={styles.title}>{title}</h2>
                     <p className={styles.customer}>{customer}</p>

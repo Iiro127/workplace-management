@@ -1,6 +1,6 @@
 import { ProjectProps } from "../components/Projects/Project/Project.tsx";
 
-export async function updateProjectStatus(updatedProject: ProjectProps, token: any): Promise<ProjectProps[] | undefined>  {
+export async function updateProjectStatus(updatedProject: ProjectProps, token: any): Promise<boolean> {
     const response = await fetch ('http://localhost:8080/projects/' + updatedProject.id, {
         method: 'PUT',
         headers: {
@@ -9,6 +9,8 @@ export async function updateProjectStatus(updatedProject: ProjectProps, token: a
             },
         body: JSON.stringify(updatedProject)
     })
+
+    return response.ok
 }
 
 export async function refreshProjects(token: any, isAdmin: any) {
