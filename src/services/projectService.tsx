@@ -39,3 +39,24 @@ export async function refreshProjects(token: any, isAdmin: any) {
     console.error("Error fetching projects:", error);
     }
 }
+
+export async function deleteProject(id: string, token: any) {
+    try {
+        const response = await fetch('http://localhost:8080/projects/' + id, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            }
+        });
+        if (!response.ok) {
+            alert("Failed to delete project. Please try again.");
+        } else {
+            alert("Project deleted successfully.");
+        }
+
+        return response.ok;
+    } catch (error) {
+        console.error("Error deleting project:", error);
+    }
+}

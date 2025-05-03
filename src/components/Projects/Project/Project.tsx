@@ -3,6 +3,7 @@ import styles from './Project.module.css';
 import StatusContainer from './StatusContainer/StatusContainer.tsx';
 import { authAtom } from '../../../atoms/authAtom.tsx';
 import { useAtom } from 'jotai';
+import { deleteProject } from '../../../services/projectService.tsx';
 
 interface User {
     id: string;
@@ -29,7 +30,7 @@ const Project: React.FC<ProjectProps> = ({ id, title, customer, dateAdded, finis
     return (
         <div className={styles.projectitem}>
             <div className={styles.maininfo}>
-                {auth?.isAdmin && <div className={styles.deleteButton}>Delete</div>}
+                {auth?.isAdmin && <div className={styles.deleteButton} onClick={() => {deleteProject(id, auth?.tokenRaw)}}>Delete</div>}
                 <div className={styles.details}>
                     <h2 className={styles.title}>{title}</h2>
                     <p className={styles.customer}>{customer}</p>
