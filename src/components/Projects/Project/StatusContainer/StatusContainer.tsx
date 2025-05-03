@@ -20,7 +20,6 @@ const StatusContainer: React.FC<StatusProps> = ({ status, project }) => {
         const updatedProject = { ...project, status: e.target.value };
         updateProjectStatus(updatedProject, auth?.tokenRaw);
     };
-
     return (
         <div>
             <div className={`${styles.status} ${styles[currentStatus.toLowerCase().replace(/\s/g, '')]}`}>

@@ -5,16 +5,18 @@
     width: 92%;
     height: 70vh;
     margin-top: 15px;
+    margin-bottom: 80px;
   }
 
 .projectlist {
     display: flex;
     justify-content: center;
+    padding-top: 10px;
     align-items: center;
     border-radius: 20pt;
     background-color: silver;
     width: 70%;
-    height: auto;
+    height: fit-content;
 }
 
 .listcontainer {

@@ -1,6 +1,6 @@
 import { ProjectProps } from "../components/Projects/Project/Project.tsx";
 
-export async function updateProjectStatus(updatedProject: ProjectProps, token: any): Promise<ProjectProps[] | undefined>  {
+export async function updateProjectStatus(updatedProject: ProjectProps, token: any): Promise<boolean> {
     const response = await fetch ('http://localhost:8080/projects/' + updatedProject.id, {
         method: 'PUT',
         headers: {
@@ -9,6 +9,8 @@ export async function updateProjectStatus(updatedProject: ProjectProps, token: a
             },
         body: JSON.stringify(updatedProject)
     })
+
+    return response.ok
 }
 
 export async function refreshProjects(token: any, isAdmin: any) {
@@ -35,5 +37,26 @@ export async function refreshProjects(token: any, isAdmin: any) {
     return data;
     } catch (error) {
     console.error("Error fetching projects:", error);
+    }
+}
+
+export async function deleteProject(id: string, token: any) {
+    try {
+        const response = await fetch('http://localhost:8080/projects/' + id, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            }
+        });
+        if (!response.ok) {
+            alert("Failed to delete project. Please try again.");
+        } else {
+            alert("Project deleted successfully.");
+        }
+
+        return response.ok;
+    } catch (error) {
+        console.error("Error deleting project:", error);
     }
 }
