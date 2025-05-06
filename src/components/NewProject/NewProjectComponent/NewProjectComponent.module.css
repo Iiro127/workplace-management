@@ -28,6 +28,7 @@
   margin-bottom: 40pt;
   display: flex;
   height: 10pt;
+  margin-top: 10pt;
   align-items: center;
 }
 
@@ -50,6 +51,7 @@
 .members,
 .memberResults {
   width: 50%;
+  position: relative;
 }
 
 .managerChoice {
@@ -70,11 +72,25 @@ input {
 .dropdownResult {
   width: 96%;
   transition: color 0.1s ease; 
+  margin-bottom: 40pt;
 }
 
 .dropdownResult:hover {
   color: #4b4b4b;
 }
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  width: 40%;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 10;
+  max-height: 150px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 button {
   margin: 10pt;

@@ -33,6 +33,7 @@ export async function loadUserInfo(keycloakInstance) {
   }
 }
 
+// Keycloak authentication
 const SecuredRoute = ({ children }) => {
   const [keycloak, setKeycloak] = useState(null);
   const [isAuthenticated, setAuthenticated] = useState(false);
