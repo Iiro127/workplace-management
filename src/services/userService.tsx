@@ -39,4 +39,25 @@ export async function saveUserToDB(userInfo: any) {
       throw error;
     }
   }
+
+export async function getUsers(token: any) {
+    try {
+        const response = await fetch('http://localhost:8080/users', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error("Failed to fetch users");
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching users:", error);
+    }
+}
   

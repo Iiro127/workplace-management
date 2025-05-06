@@ -1,8 +1,11 @@
 import React from 'react'
 import styles from './NewProjectComponent.module.css'
 import NewProjectTitles from '../NewProjectTitles/NewProjectTitles.tsx';
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { User } from '../../../types/User.tsx';
+import { authAtom } from '../../../atoms/authAtom.tsx';
+import { useAtom } from 'jotai';
+import { getUsers } from '../../../services/userService.tsx';
 
 const dummyUsers = [
     {
@@ -32,6 +35,8 @@ const dummyUsers = [
 ]
 
 const NewProjectComponent = () => {
+    const [auth] = useAtom(authAtom);
+    const [users, setUsers] = useState([]);
     const [project, setProject] = useState({
         id: "asasasas",
         title: "",
@@ -42,6 +47,19 @@ const NewProjectComponent = () => {
         manager: { id: "", firstName: "", lastName: "", isActive: true },
         members: []
     });
+
+    const fetchUsers = useCallback(async () => {
+        try {
+            const data = await getUsers(auth?.tokenRaw);
+            setUsers(data);
+        } catch (error) {
+            console.error("Error fetching projects:", error);
+        }
+    }, [auth]);
+
+    useEffect(() => {
+        fetchUsers();
+    }, [auth]);
 
     const [managerSearchTerm, setManagerSearchTerm] = useState("");
     const [memberSearchTerm, setMemberSearchTerm] = useState("");
@@ -62,9 +80,9 @@ const NewProjectComponent = () => {
     const handleManagerChange = (e) => {
         const value = e.target.value;
         setManagerSearchTerm(value);
-        
+    
         if (value.length > 0) {
-            const matches = dummyUsers.filter(manager =>
+            const matches = users.filter(manager =>
                 manager.firstName.toLowerCase().includes(value.toLowerCase())
             ).slice(0, 3);
             setFilteredManagers(matches);
@@ -80,7 +98,7 @@ const NewProjectComponent = () => {
         setMemberSearchTerm(value);
         
         if (value.length > 0) {
-            const matches = dummyUsers.filter(member =>
+            const matches = users.filter(member =>
                 member.firstName.toLowerCase().includes(value.toLowerCase())
             ).slice(0, 3);
             setFilteredMembers(matches);
