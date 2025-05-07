@@ -2,10 +2,10 @@ import React from 'react'
 import styles from './NewProjectComponent.module.css'
 import NewProjectTitles from '../NewProjectTitles/NewProjectTitles.tsx';
 import { useState, useCallback, useEffect } from 'react'
-import { User } from '../../../types/User.tsx';
 import { authAtom } from '../../../atoms/authAtom.tsx';
 import { useAtom } from 'jotai';
 import { getUsers } from '../../../services/userService.tsx';
+import { submitProject, generateRandomId } from '../../../services/projectService.tsx';
 
 const dummyUsers = [
     {
@@ -38,7 +38,7 @@ const NewProjectComponent = () => {
     const [auth] = useAtom(authAtom);
     const [users, setUsers] = useState([]);
     const [project, setProject] = useState({
-        id: "asasasas",
+        id: generateRandomId(),
         title: "",
         customer: "",
         dateAdded: new Date().toISOString().split('T')[0],
@@ -143,22 +143,8 @@ const NewProjectComponent = () => {
     }
 
     const handleSubmit = async (e) => {
-        console.log(JSON.stringify(project))
-        e.preventDefault();
-        try {
-            const response = await fetch("http://localhost:8080/projects", {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json" 
-                },
-                body: JSON.stringify(project)
-            });
-            if (!response.ok) throw new Error("Failed to create project");
-            alert("Project successfully created!");
-        } catch (error) {
-            console.error(error);
-            alert("Error creating project");
-        }
+        e.preventDefault()
+        await submitProject(project, auth?.tokenRaw)
     };
 
     return (
