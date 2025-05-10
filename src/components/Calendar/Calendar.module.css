@@ -1,0 +1,29 @@
+.componentcontainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 88%;
+    height: 70vh;
+    margin-top: 15px;
+    margin-bottom: 80px;
+    margin-right: 1%;
+    margin-left: auto;
+  }
+
+.calendar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    margin-right: 3%;
+    align-items: center;
+    border-radius: 20pt;
+    background-color: silver;
+    width: 70%;
+    height: fit-content;
+}
+
+.weekdaysrow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
