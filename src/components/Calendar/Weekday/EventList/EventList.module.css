@@ -1,0 +1,16 @@
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 220px;
+}
+
+.eventListContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+}

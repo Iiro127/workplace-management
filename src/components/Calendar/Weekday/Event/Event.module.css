@@ -1,0 +1,14 @@
+.eventContainer {
+    background-color: whitesmoke;
+    margin-bottom: 10pt;
+    border-radius: 15pt;
+    width: 89%;
+    padding: 10px;
+    max-height: fit-content;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.eventTitle {
+    font-size: 1.25rem;
+    margin: 0;
+}
