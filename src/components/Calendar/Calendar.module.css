@@ -1,9 +1,8 @@
 .componentcontainer {
     display: flex;
     justify-content: flex-end;
-    width: 88%;
+    width: 60%;
     height: 70vh;
-    margin-top: 100px;
     margin-bottom: 80px;
     margin-right: 1%;
     margin-left: auto;
@@ -18,7 +17,7 @@
     align-items: center;
     border-radius: 20pt;
     background-color: silver;
-    width: 70%;
+    width: 100%;
     height: fit-content;
 }
 

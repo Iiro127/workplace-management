@@ -1,0 +1,10 @@
+.newEventComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  width: 25%;
+  height: 12vh;
+  background-color: silver;
+  border-radius: 20px;
+}
